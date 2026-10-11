@@ -1,0 +1,35 @@
+// Shopping Cart Total & Discount Calculator
+#include <iostream>
+
+int main() {
+    double itemPrice; 
+    double totalCost = 0.0;
+    int itemsCount = 0;
+
+    std::cout << "Enter item prices (Type 0 when you are finished adding items):\n";
+
+    // Loop keeps running until user types 0
+    while (true) {
+        std::cout << "Item " << (itemsCount + 1) << " price: $";
+        std::cin >> itemPrice;
+
+        if (itemPrice == 0) {
+            break; // Stop the loop
+        }
+
+        totalCost += itemPrice;
+        itemsCount++;
+    }
+
+    std::cout << "\nSubtotal (" << itemsCount << " items): $" << totalCost << std::endl;
+
+    // Apply a 10% discount if the bill is over $100
+    if (totalCost > 100.0) {
+        double discount = totalCost * 0.10;
+        totalCost -= discount;
+        std::cout << "You saved 10%! Discount applied: -$" << discount << std::endl;
+    }
+
+    std::cout << "Final Total to Pay: $" << totalCost << std::endl;
+    return 0;
+}
